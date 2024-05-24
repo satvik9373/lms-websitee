@@ -5,32 +5,34 @@ const MASTER_URL = `https://api-ap-south-1.hygraph.com/v2/${process.env.NEXT_PUB
 const getCourseList = async () => {
     const query = gql`
         query GetCourseList {
-            courseLists {
-                author
-                name
-                id
-                free
-                description
-                banner {
+                courseLists(first: 20, orderBy: createdAt_DESC) {
+                  author
+                  name
+                  id
+                  free
+                  description
+                  banner {
                     url
-                }
-                chapters {
+                  }
+                  chapter {
                     ... on Chapter {
-                        id
-                        name
-                        video {
-                            url
-                        }
+                      id
+                      name
+                      video {
+                        url
+                      }
                     }
+                  }
+                  totalChapters
+                  tag
                 }
-                totalChapters
-                tag
-            }
-        }
+              }
+              
     `;
 
     try {
         const result = await request(MASTER_URL, query);
+        console.log(result)
         return result;
     } catch (error) {
         console.error('Error fetching course list:', error);
@@ -38,6 +40,58 @@ const getCourseList = async () => {
     }
 };
 
+const getSideBanner=async()=>{
+    const query=gql`
+    query GetSideBanner {
+        sideBanners {
+          id
+          name
+          banner {
+            id
+            url
+          }
+          url
+        }
+      }      
+    `
+    const result = await request(MASTER_URL, query);
+    return result;
+}
+
+const getCourseById=async(courseId)=>{
+  const query=gql`
+  query MyQuery {
+    courseList(where: {slug: "ultimate-guide-marketing-success"}) {
+      author
+      banner {
+        url
+      }
+      chapter {
+        ... on Chapter {
+          id 
+          name
+          video {
+            url
+          }
+        }
+      }
+      description
+      free
+      id
+      name
+      tag
+      totalChapters
+      slug
+    }
+  }  
+  `
+
+  const result = await request(MASTER_URL, query);
+  return result;
+}
+
 export default {
-    getCourseList
+    getCourseList,
+    getSideBanner,
+    getCourseById
 };
