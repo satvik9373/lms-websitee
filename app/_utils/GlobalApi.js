@@ -90,8 +90,105 @@ const getCourseById=async(courseId)=>{
   return result;
 }
 
+const enrollToCourse=async(courseId,email)=>{
+  const query=gql`
+  mutation MyMutation {
+    createUserEnrollCoure(
+      data: {courseId: "`+courseId+`", userEmail: "`+email+`", courseList: {connect: {slug: "`+courseId+`"}}}
+    ) {
+      id
+    }
+    publishManyUserEnrollCouresConnection {
+      edges {
+        node {
+          id
+        }
+      }
+    }
+  }  
+  `
+  const result = await request(MASTER_URL, query);
+  return result;
+}
+
+const checkUserEnrolledToCourse=async(courseId,email)=>{
+  const query=gql`
+  query MyQuery {
+    userEnrollCoures(where: {courseId: "`+courseId+`", userEmail: "`+email+`"}) {
+      id
+    }
+  }  
+  `
+  const result = await request(MASTER_URL, query);
+  return result;
+}
+
+const getUserEnrolledCourseDetails=async(id,email)=>{
+  const query=gql`
+  query MyQuery {
+    userEnrollCoures(where: {id: "`+id+`", userEmail: "`+email+`"}) {
+      courseId
+      id
+      userEmail
+      completedChapter {
+        ... on CompletedChapter {
+          id
+          chapterId
+        }
+      }
+      courseList {
+        author
+        banner {
+          url
+        }
+        chapter {
+          ... on Chapter {
+            id
+            name
+            shortDesc
+            video {
+              url
+            }
+          }
+        }
+        description
+        free
+        id
+        name
+        slug
+        totalChapters
+      }
+    }
+  }  
+  `
+  const result = await request(MASTER_URL, query);
+  return result;
+}
+
+const markChapterCompleted=async(enrollId,chapterId)=>{
+  const query=gql`
+  mutation MyMutation {
+    updateUserEnrollCoure(
+      data: {completedChapter: {create: {CompletedChapter: {data: {chapterId: "`+chapterId+`"}}}}}
+      where: {id: "`+enrollId+`"}
+    ) {
+      id
+    }
+    publishUserEnrollCoure(where: {id: "`+enrollId+`"}) {
+      id
+    }
+  }  
+  `
+  const result = await request(MASTER_URL, query);
+  return result; 
+}
+
 export default {
     getCourseList,
     getSideBanner,
-    getCourseById
+    getCourseById,
+    enrollToCourse,
+    checkUserEnrolledToCourse,
+    getUserEnrolledCourseDetails,
+    markChapterCompleted
 };
