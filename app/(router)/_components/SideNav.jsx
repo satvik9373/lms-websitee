@@ -1,7 +1,7 @@
 "use client"
 import { useUser } from '@clerk/nextjs'
 
-import { BadgeIcon, BookOpen, GraduationCap, LayoutDashboard, LayoutGrid, Share } from 'lucide-react'
+import { BadgeIcon, BookOpen, File, GraduationCap, LayoutDashboard, LayoutGrid, Share } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -33,9 +33,9 @@ function SideNav() {
         },
         {
             id:4,
-            name:'Share Our Courses',
-            icon:Share,
-            path:'/Share',
+            name:'Privacy-Policy',
+            icon:File,
+            path:'/Privacy-Policy',
             auth:true
         },
        
