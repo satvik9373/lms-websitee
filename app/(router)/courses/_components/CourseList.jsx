@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import GlobalApi from '@/app/_utils/GlobalApi';
+import GlobalApi from '../../../_utils/GlobalApi';
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-  } from "@/components/ui/select"
+  } from "./../../.././../components/ui/select"
 import CourseItems from './CourseItems';
 import Link from 'next/link';
+
   
 function CourseList() {
    

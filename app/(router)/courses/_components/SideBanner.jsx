@@ -1,6 +1,7 @@
-import GlobalApi from '@/app/_utils/GlobalApi';
+
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import GlobalApi from '../../../_utils/GlobalApi';
 
 function SideBanner() {
     const [sideBannerList, setSideBannerList] = useState([]);

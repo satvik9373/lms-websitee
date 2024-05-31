@@ -1,10 +1,10 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import CourseVideoDescription from './_components/CourseVideoDescription'
-import GlobalApi from '@/app/_utils/GlobalApi'
 import CourseEnrollSection from './_components/CourseEnrollSection';
 import CourseContentSection from './_components/CourseContentSection';
 import { useUser } from '@clerk/nextjs';
+import GlobalApi from '../../../_utils/GlobalApi';
 
 function CoursePreview({ params }) {
 

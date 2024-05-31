@@ -1,7 +1,7 @@
 import React from 'react'
 import VideoPlayer from './VideoPlayer'
 import Markdown from 'react-markdown'
-import { Button } from '@/components/ui/button'
+import { Button } from '../../../../../components/ui/button'
 
 function CourseVideoDescription({ courseInfo,activeChapterIndex,watchMode=false,setChapterCompleted }) {
     return (
