@@ -46,8 +46,8 @@ function SideNav() {
 console.log("path",path)
     },[])
   return (
-    <div className='p-5 bg-white shadow-sm border h-screen'>
-        <Image src='/logo.png' alt='logo' width={170} height={80}/>
+    <div className='p-5 bg-white shadow-sm border h-screen '>
+        <Image src='/logo.png' alt='logo' width={200} height={80}/>
 
 <hr className='mt-5'/>
         {/* menu list */}
