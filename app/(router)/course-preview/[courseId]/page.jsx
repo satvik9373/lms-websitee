@@ -13,6 +13,7 @@ function CoursePreview({ params }) {
   const [isUserAlreadyEnrolled, setIsUserAlreadyEnrolled] = useState();
   useEffect(() => {
     params && getCourseInfoById();
+    console.log(params)
   }, [params])
 
   useEffect(() => {

@@ -38,7 +38,13 @@ function SideNav() {
             path:'/Privacy-Policy',
             auth:true
         },
-       
+        {
+            id:5,
+            name:'Terms & Conditions',
+            icon:File,
+            path:'/Terms-Condition',
+            auth:true
+        },
     ]
 
     const path=usePathname();

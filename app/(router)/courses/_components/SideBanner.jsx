@@ -22,7 +22,7 @@ function SideBanner() {
             {sideBannerList.map((item, index) => (
                 <div key={index}>
                     <Image 
-                        src={item.banner.url} 
+                        src={item?.banner?.url} 
                         alt='banner'
                         width={500}
                         height={300}

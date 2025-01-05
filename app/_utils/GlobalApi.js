@@ -25,6 +25,7 @@ const getCourseList = async () => {
                   }
                   totalChapters
                   tag
+                  slug
                 }
               }
               
@@ -61,7 +62,7 @@ const getSideBanner=async()=>{
 const getCourseById=async(courseId)=>{
   const query=gql`
   query MyQuery {
-    courseList(where: {slug: "ultimate-guide-marketing-success"}) {
+    courseList(where: {slug: "`+courseId+`"}) {
       author
       banner {
         url
@@ -183,6 +184,44 @@ const markChapterCompleted=async(enrollId,chapterId)=>{
   return result; 
 }
 
+const getUserAllEnrolledCourseList=async(email)=>{
+  const query=gql`
+  query MyQuery {
+  userEnrollCoures(where: {userEmail: "`+email+`"}) {
+    completedChapter {
+      ... on CompletedChapter {
+        id
+        chapterId
+      }
+    }
+    courseId
+    courseList {
+      id
+      name
+      totalChapters
+      slug
+      free
+      description
+      chapter(first: 50) {
+        ... on Chapter {
+          id
+          name
+        }
+      }
+      author
+      banner {
+        url
+      }
+    }
+  }
+}
+  `
+
+  const result = await request(MASTER_URL, query);
+  return result; 
+}
+
+
 export default {
     getCourseList,
     getSideBanner,
@@ -190,5 +229,6 @@ export default {
     enrollToCourse,
     checkUserEnrolledToCourse,
     getUserEnrolledCourseDetails,
-    markChapterCompleted
+    markChapterCompleted,
+    getUserAllEnrolledCourseList
 };

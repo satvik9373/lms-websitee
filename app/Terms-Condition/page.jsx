@@ -16,7 +16,7 @@ function Page() {
               <a className="block text-white" href="#">
                 <span className="sr-only">Home</span>
                 <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-          Our Privacy-Policy
+          Our Terms and Conditions
         </h2>
               </a>
             </div>
@@ -29,7 +29,7 @@ function Page() {
                 <div className="col-span-6">
                   <label htmlFor="MarketingAccept" className="flex gap-4">
                     <span className="text-sm text-gray-700">
-                    <h1 className='font-bold text-2xl text-center'>Privacy Policy and Terms of Service</h1>
+                    <h1 className='font-bold text-2xl text-center'>Terms and Conditions</h1>
 <br />
 
 Terms and conditions for Econfin-Labs
@@ -100,9 +100,9 @@ These Terms constitute the entire agreement between you and Economic labs regard
 <h2 className='font-bold text-xl text-center'>Updates to the Terms</h2>
 <br />
 Economic labs may update these Terms from time to time. We will notify you of any material changes by posting the new Terms on the Economic labs website or by sending you an email. You are advised to review these Terms periodically for any changes. Your continued use of the Services after the revised Terms are posted will constitute your acceptance of the revised Terms.
-
-<h3 className='font-bold text-lg text-center'>Contact Us</h3>
 <br />
+<br />
+<h3 className='font-bold text-lg text-center'>Contact Us</h3>
 <br />
 If you have any questions about these Terms, please contact us at <br />
 This Terms of Use is more specific to your website and includes disclaimers regarding the accuracy of job postings and information. You may also want to consider adding a section about: <br />
@@ -113,10 +113,9 @@ This Terms of Use is more specific to your website and includes disclaimers rega
 
                 <div className="col-span-6">
                   <p className="text-sm text-gray-500">
-                    By creating an account, you agree to our
-                    <a href="#" className="text-gray-700 underline"> terms and conditions </a>
-                    and 
-                     <a href="#" className="text-gray-700 underline">privacy policy</a>.
+                    By creating an account, you agree to our  
+                    <a href="/Terms-Condition" className="text-gray-700 underline"> terms and conditions </a>
+                    and     < a href="/Privacy-Policy" className="text-gray-700 underline">privacy policy</a>.
                   </p>
                 </div>
               </form>
